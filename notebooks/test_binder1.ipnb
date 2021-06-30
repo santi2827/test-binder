@@ -1,0 +1,16 @@
+import ipywidgets as widgets
+
+slider = widgets.FloatSlider(description='$x$', value=4)
+text = widgets.FloatText(disabled=True, description='$x^2$')
+
+def compute(*ignore):
+    text.value = str(slider.value ** 2)
+
+slider.observe(compute, 'value')
+
+widgets.VBox([slider, text])
+
+import pandas as pd
+
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+iris
